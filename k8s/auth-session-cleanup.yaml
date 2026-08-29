@@ -18,7 +18,7 @@ spec:
             - name: ghcr-secret
           containers:
             - name: cleanup
-              image: ghcr.io/tranloi2k/new-feed-microservices-auth-service-migrate:a2a5bee2f549f82467e211e4660903eb7186f7a2
+              image: ghcr.io/tranloi2k/new-feed-microservices-auth-service-migrate:837a4cc2bd2699f9829f707071eaaf201db84c42
               command: ["npm", "run", "sessions:cleanup"]
               envFrom:
                 - secretRef:
