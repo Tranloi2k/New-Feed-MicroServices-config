@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       initContainers:
         - name: migrate
-          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service-migrate:9cacd76d1459bb8d2a0afd5d2e77e4cb9619c95e
+          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service-migrate:637185e081c684bd94fd559aeed7c6415599f679
           envFrom:
             - secretRef:
                 name: app-secrets
@@ -32,7 +32,7 @@ spec:
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-auth:5432/auth_db
       containers:
         - name: auth-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service:9cacd76d1459bb8d2a0afd5d2e77e4cb9619c95e
+          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service:637185e081c684bd94fd559aeed7c6415599f679
           ports:
             - containerPort: 3001
           envFrom:

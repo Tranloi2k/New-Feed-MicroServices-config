@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       initContainers:
         - name: migrate
-          image: ghcr.io/tranloi2k/new-feed-microservices-post-service:9cacd76d1459bb8d2a0afd5d2e77e4cb9619c95e
+          image: ghcr.io/tranloi2k/new-feed-microservices-post-service:637185e081c684bd94fd559aeed7c6415599f679
           command: ["npx", "prisma", "migrate", "deploy"]
           envFrom:
             - secretRef:
@@ -27,7 +27,7 @@ spec:
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-post:5432/post_db
       containers:
         - name: post-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-post-service:9cacd76d1459bb8d2a0afd5d2e77e4cb9619c95e
+          image: ghcr.io/tranloi2k/new-feed-microservices-post-service:637185e081c684bd94fd559aeed7c6415599f679
           ports:
             - containerPort: 3002
           envFrom:
