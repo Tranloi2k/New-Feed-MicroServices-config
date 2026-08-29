@@ -12,6 +12,13 @@ spec:
     - host: api.vps-services.online
       http:
         paths:
+          - path: /chat/socket.io
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-service
+                port:
+                  number: 3006
           - path: /
             pathType: Prefix
             backend:
