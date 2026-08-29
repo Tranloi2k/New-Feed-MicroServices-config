@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: api-gateway
-          image: ghcr.io/tranloi2k/new-feed-microservices-api-gateway:ca32067132db170dc2bcdd0d1f703dff2aef9f4e
+          image: ghcr.io/tranloi2k/new-feed-microservices-api-gateway:d2c56c9d91597e57ee9be478d3589d10725e9c49
           ports:
             - containerPort: 8080
           envFrom:

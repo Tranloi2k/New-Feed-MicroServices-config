@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: media-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-media-service:ca32067132db170dc2bcdd0d1f703dff2aef9f4e
+          image: ghcr.io/tranloi2k/new-feed-microservices-media-service:d2c56c9d91597e57ee9be478d3589d10725e9c49
           ports:
             - containerPort: 3003
           envFrom:
