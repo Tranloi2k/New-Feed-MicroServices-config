@@ -44,6 +44,23 @@ spec:
               value: newfeed-auth-service
             - name: JWT_AUDIENCE
               value: newfeed-api-gateway
+            # Traefik is the only proxy in front of the gateway. Without this,
+            # req.ip is Traefik's pod IP and every client shares one rate-limit
+            # bucket. Set here so it cannot drift with the secret.
+            - name: TRUST_PROXY_HOPS
+              value: "1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 15
           resources:
             requests:
               memory: "128Mi"
