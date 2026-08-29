@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       initContainers:
         - name: migrate
-          image: ghcr.io/tranloi2k/new-feed-microservices-chat-service-migrate:837a4cc2bd2699f9829f707071eaaf201db84c42
+          image: ghcr.io/tranloi2k/new-feed-microservices-chat-service-migrate:189cf2750ffd390fc10395e9dd43c1114ba0644a
           envFrom:
             - secretRef:
                 name: app-secrets
@@ -26,7 +26,7 @@ spec:
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-chat:5432/chat_db
       containers:
         - name: chat-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-chat-service:837a4cc2bd2699f9829f707071eaaf201db84c42
+          image: ghcr.io/tranloi2k/new-feed-microservices-chat-service:189cf2750ffd390fc10395e9dd43c1114ba0644a
           ports:
             - containerPort: 3006
           envFrom:
