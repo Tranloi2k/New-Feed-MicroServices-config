@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       initContainers:
         - name: migrate
-          image: ghcr.io/tranloi2k/new-feed-microservices-comment-service:f46fca861da610582ae0b2e17b4f019ebf135541
+          image: ghcr.io/tranloi2k/new-feed-microservices-comment-service:73c99828249251d8d4787d06acb7546362902cb8
           command: ["npx", "prisma", "migrate", "deploy"]
           envFrom:
             - secretRef:
@@ -27,7 +27,7 @@ spec:
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-comment:5432/comment_db
       containers:
         - name: comment-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-comment-service:f46fca861da610582ae0b2e17b4f019ebf135541
+          image: ghcr.io/tranloi2k/new-feed-microservices-comment-service:73c99828249251d8d4787d06acb7546362902cb8
           ports:
             - containerPort: 3004
           envFrom:
