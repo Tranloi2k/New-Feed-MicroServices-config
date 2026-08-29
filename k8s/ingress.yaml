@@ -4,10 +4,12 @@ metadata:
   name: api-ingress
   namespace: newfeed
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
 spec:
   rules:
-    - host: api.169.58.249.13.nip.io
+    - host: api.vps-services.online
       http:
         paths:
           - path: /
@@ -17,6 +19,9 @@ spec:
                 name: api-gateway
                 port:
                   number: 8080
+  tls:
+    - hosts:
+        - api.vps-services.online
 
 # Khi da co domain va muon bat HTTPS tu dong, thay block tren bang:
 #
