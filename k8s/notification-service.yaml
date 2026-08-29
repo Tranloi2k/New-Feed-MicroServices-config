@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       initContainers:
         - name: migrate
-          image: ghcr.io/tranloi2k/new-feed-microservices-notification-service:72345cb94453f0d9aecf428faa3762b6a031b658
+          image: ghcr.io/tranloi2k/new-feed-microservices-notification-service:87871dc324fe50aaea36444aa38dd756954e0571
           command: ["npx", "prisma", "migrate", "deploy"]
           envFrom:
             - secretRef:
@@ -27,7 +27,7 @@ spec:
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-notification:5432/notification_db
       containers:
         - name: notification-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-notification-service:72345cb94453f0d9aecf428faa3762b6a031b658
+          image: ghcr.io/tranloi2k/new-feed-microservices-notification-service:87871dc324fe50aaea36444aa38dd756954e0571
           ports:
             - containerPort: 3005
           envFrom:
