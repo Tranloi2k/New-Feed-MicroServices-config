@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: auth-service
-          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service:608b83dea64535c5dfb5def22ccfbebd61959174
+          image: ghcr.io/tranloi2k/new-feed-microservices-auth-service:ab58361082af28e4b1e086ed82b4d44bc7db03b2
           ports:
             - containerPort: 3001
           envFrom:
