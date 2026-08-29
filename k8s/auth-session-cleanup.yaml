@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: auth-session-cleanup
+  namespace: newfeed
+spec:
+  schedule: "17 3 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      template:
+        spec:
+          restartPolicy: OnFailure
+          imagePullSecrets:
+            - name: ghcr-secret
+          containers:
+            - name: cleanup
+              image: ghcr.io/tranloi2k/new-feed-microservices-auth-service-migrate:ab58361082af28e4b1e086ed82b4d44bc7db03b2
+              command: ["npm", "run", "sessions:cleanup"]
+              envFrom:
+                - secretRef:
+                    name: app-secrets
+              env:
+                - name: NODE_ENV
+                  value: production
+                - name: DATABASE_URL
+                  value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-auth:5432/auth_db

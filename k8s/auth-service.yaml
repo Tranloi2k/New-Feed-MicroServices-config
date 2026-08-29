@@ -22,6 +22,14 @@ spec:
             - secretRef:
                 name: app-secrets
           env:
+            - name: NODE_ENV
+              value: production
+            - name: DEMO_LOGIN_ENABLED
+              value: "false"
+            - name: JWT_ISSUER
+              value: newfeed-auth-service
+            - name: JWT_AUDIENCE
+              value: newfeed-api-gateway
             - name: DATABASE_URL
               value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres-auth:5432/auth_db
       containers:
@@ -33,6 +41,14 @@ spec:
             - secretRef:
                 name: app-secrets
           env:
+            - name: NODE_ENV
+              value: production
+            - name: DEMO_LOGIN_ENABLED
+              value: "false"
+            - name: JWT_ISSUER
+              value: newfeed-auth-service
+            - name: JWT_AUDIENCE
+              value: newfeed-api-gateway
             - name: PORT
               value: "3001"
             - name: DATABASE_URL
